@@ -1,8 +1,12 @@
 {
-  "name": "frontend",
+  "name": "job-trackr-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "Platias Konstantinos",
+    "email": "platiaskostas318@gmail.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
