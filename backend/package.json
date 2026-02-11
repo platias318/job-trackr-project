@@ -1,10 +1,14 @@
 {
-  "name": "express",
+  "name": "job-trackr-backend",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Platias Konstantinos",
+    "email": "platiaskostas318@gmail.com"
+  },
   "license": "ISC",
   "scripts": {
     "dev": "tsx watch src/index.ts",
