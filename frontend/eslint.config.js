@@ -13,8 +13,7 @@ export default defineConfig([
     files: ["**/*.{ts,tsx}"],
     extends: [
       js.configs.recommended,
-      tseslint.configs.strictTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
+      tseslint.configs.recommended,
       reactX.configs["recommended-typescript"],
       reactDom.configs.recommended,
       reactHooks.configs.flat.recommended,

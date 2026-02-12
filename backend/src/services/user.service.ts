@@ -1,6 +1,6 @@
 import { User } from "../types/user.types.js";
 
-let users: User[] = [
+const users: User[] = [
   { id: 1, name: "Alice" },
   { id: 2, name: "Bob" },
 ];
