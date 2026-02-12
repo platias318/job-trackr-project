@@ -5,7 +5,7 @@ export const getUsers = async (req: Request, res: Response) => {
   try {
     const users = await userService.getAllUsers();
     res.json(users);
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: "Failed to fetch users" });
   }
 };
