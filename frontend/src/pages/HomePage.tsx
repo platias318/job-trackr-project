@@ -1,11 +1,13 @@
+import { Button } from "@mui/material";
 import { useEffect } from "react";
+
 import { userService } from "@/services/user.service";
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
+
 import {
   selectIsActive,
   updateIsActive,
 } from "../components/redux/common/commonSlice";
-import { Button } from "@mui/material";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();

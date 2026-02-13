@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import commonReducer from "../components/redux/common/commonSlice";
 
 export const store = configureStore({
