@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { userService } from "../services/user.service";
-import { useAppDispatch, useAppSelector } from "../stores/hooks";
+import { userService } from "@/services/user.service";
+import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import {
   selectIsActive,
   updateIsActive,
