@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { Provider } from "react-redux";
-import { store } from "../src/stores/store.ts";
+import { store } from "@/stores/store.ts";
 import theme from "../theme";
 import App from "./App.tsx";
 
