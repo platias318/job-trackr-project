@@ -1,41 +1,33 @@
-import { Button } from "@mui/material";
-import { useEffect } from "react";
-
-import { userService } from "@/services/user.service";
-import { useAppDispatch, useAppSelector } from "@/stores/hooks";
-
-import {
-  selectIsActive,
-  updateIsActive,
-} from "../components/redux/common/commonSlice";
+import { Box, Button, Container, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const HomePage = () => {
-  const dispatch = useAppDispatch();
-
-  const isActive = useAppSelector(selectIsActive);
-
-  const handleClick = () => {
-    dispatch(updateIsActive(!isActive));
-  };
-
-  const fetchUsers = async () => {
-    try {
-      const data = await userService.getUsers();
-      console.log("The users are " + data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
   return (
-    <div>
-      {isActive && <div>Active is true</div>}
-      <Button onClick={handleClick}> Click me for active update </Button>
-      <h1>Home Page</h1>
-    </div>
+    <Container maxWidth="md">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        minHeight="100vh"
+        textAlign="center"
+      >
+        <Typography variant="h2" gutterBottom>
+          Job Application Tracker
+        </Typography>
+        <Typography variant="h5" color="text.secondary" paragraph>
+          Track your job applications, interviews, and offers in one place
+        </Typography>
+        <Button
+          component={Link}
+          to="/login"
+          variant="contained"
+          size="large"
+          sx={{ mt: 3 }}
+        >
+          Get Started
+        </Button>
+      </Box>
+    </Container>
   );
 };
