@@ -65,7 +65,12 @@ router.post("/logout", (req: Request, res: Response): void => {
         console.error("Session destruction error:", destroyErr);
       }
 
-      res.clearCookie("connect.sid");
+      res.clearCookie("connect.sid", {
+        path: "/",
+        domain: ".vercel.app", // Or your specific root domain
+        secure: true,
+        sameSite: "none",
+      });
       res.json({ message: "Logged out successfully" });
     });
   });
