@@ -10,8 +10,8 @@ import { authService } from "@/services/auth.service";
 import { useAppDispatch } from "@/stores/hooks";
 
 export const AuthCallbackPage = () => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);

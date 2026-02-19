@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import { pool } from "../config/db.js";
 import { verifyToken } from "../utils/jwt.js";
 
+// This middleware function gets called from every protected endpoint in order to see if the user is authenticated
 export const isAuthenticated = async (
   req: Request,
   res: Response,
@@ -11,13 +12,12 @@ export const isAuthenticated = async (
   const token = req.cookies?.token;
 
   if (!token) {
-    res.status(401).json({ error: "Not authenticated" });
+    res.status(401).json({ error: "User not authenticated" });
     return;
   }
 
   try {
     const payload = verifyToken(token);
-
     const result = await pool.query(
       "SELECT id, email, name FROM users WHERE id = $1",
       [payload.id],

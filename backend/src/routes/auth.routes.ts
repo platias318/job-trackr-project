@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import { Request, Response, Router } from "express";
 
 import { pool } from "../config/db.js";
 import passport from "../config/passport.js";
@@ -6,9 +6,9 @@ import { isAuthenticated } from "../middleware/authMiddleware.js";
 import { User } from "../types/user.types.js";
 import { signToken, verifyToken } from "../utils/jwt.js";
 
-const router = express.Router();
+const router = Router();
 
-//This is the first endpoint called, this redirects to google authentication page
+// This endpoint redirects to google authentication page, this gets called when sign in button is called
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -17,13 +17,13 @@ router.get(
   }),
 );
 
-//If authentication is successfull, we go into this endpoint, and in either case we get redirected to a new endpoint(here could be the protected router we want not to be public)
 router.get(
   "/google/secrets",
   passport.authenticate("google", {
     failureRedirect: `${process.env.FRONTEND_URL}/login?error=auth_failed`,
-    session: false,
+    session: false, // We don't want session cookies
   }),
+  // Successful redirect
   (req: Request, res: Response) => {
     const user = req.user as User;
     const code = signToken(user.id);
@@ -32,6 +32,7 @@ router.get(
   },
 );
 
+// This is used to exchange cookies with frontend in order to keep the user signed in
 router.get("/exchange", async (req: Request, res: Response): Promise<void> => {
   const code = req.query.code as string;
 
@@ -69,7 +70,7 @@ router.get("/exchange", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-//When this endpoint gets hit, it checks if we are authenticated with the isAuthenticated func we created above, and then if it is true it returns the user as an object (to the frontend)
+// When this endpoint gets hit, it checks if we are authenticated with the isAuthenticated middleware func
 router.get("/me", isAuthenticated, (req: Request, res: Response) => {
   const user = req.user as User;
 
@@ -82,13 +83,13 @@ router.get("/me", isAuthenticated, (req: Request, res: Response) => {
   });
 });
 
-//This func logs us out / destroys the cookie session
 router.post("/logout", (req: Request, res: Response) => {
   res.clearCookie("token", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   });
+
   res.json({ message: "Logged out successfully" });
 });
 

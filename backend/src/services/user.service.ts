@@ -17,6 +17,5 @@ export const createUser = async (name: string): Promise<User> => {
     "INSERT INTO users (name) VALUES ($1) RETURNING id, name",
     [name],
   );
-
   return result.rows[0];
 };

@@ -3,6 +3,10 @@ import { Pool } from "pg";
 
 dotenv.config();
 
+/* 
+  Here happens the database creation
+  Postgre SQL with Neon hosting happens
+*/
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL is not defined in .env");
 }
