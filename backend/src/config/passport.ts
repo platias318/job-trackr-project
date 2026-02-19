@@ -43,21 +43,4 @@ passport.use(
   ),
 );
 
-passport.serializeUser((user, cb) => {
-  cb(null, user.id);
-});
-
-passport.deserializeUser(async (id: number, cb) => {
-  try {
-    const result = await pool.query(
-      "SELECT id, email, name FROM users WHERE id = $1",
-      [id],
-    );
-
-    cb(null, result.rows[0] ?? false);
-  } catch (err) {
-    cb(err as Error);
-  }
-});
-
 export default passport;
