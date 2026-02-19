@@ -36,6 +36,9 @@ router.get(
     failureRedirect: `${process.env.FRONTEND_URL}/login?error=auth_failed`,
   }),
   (req, res) => {
+    console.log(
+      "auth.routes/me /google/secrets route success redirect to dashboard",
+    );
     res.redirect(`${process.env.FRONTEND_URL}/dashboard`); //the "protected" endpoint
   },
 );
@@ -43,7 +46,12 @@ router.get(
 //When this endpoint gets hit, it checks if we are authenticated with the isAuthenticated func we created above, and then if it is true it returns the user as an object (to the frontend)
 router.get("/me", isAuthenticated, (req: Request, res: Response) => {
   const user = getUser(req);
-
+  console.log(
+    "auth.routes.me /me endpoint has user id" +
+      user.id +
+      " user name:" +
+      user.name,
+  );
   res.json({
     user: {
       id: user.id,

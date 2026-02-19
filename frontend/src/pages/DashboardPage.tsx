@@ -19,7 +19,12 @@ export const DashboardPage = () => {
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
       navigate("/login");
-      console.log("You are not logged in big boy");
+      console.log(
+        "Dashboard.tsx isLoading=" +
+          isLoading +
+          " and isAuthenticated=" +
+          isAuthenticated,
+      );
     }
   }, [isAuthenticated, isLoading, navigate]);
 
