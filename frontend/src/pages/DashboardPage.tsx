@@ -19,7 +19,6 @@ export const DashboardPage = () => {
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
       navigate("/login");
-      console.log("You are not logged in big boy");
     }
   }, [isAuthenticated, isLoading, navigate]);
 
@@ -60,7 +59,7 @@ export const DashboardPage = () => {
         <Typography variant="h4" gutterBottom>
           Welcome, {user?.name}!
         </Typography>
-        <Typography variant="body1" color="text.secondary" paragraph>
+        <Typography variant="body1" color="text.secondary">
           Email: {user?.email}
         </Typography>
 

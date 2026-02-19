@@ -26,7 +26,7 @@ export const useAuth = () => {
         const userData = await authService.getCurrentUser();
         dispatch(updateUser(userData));
       } catch {
-        console.log("Not authenticated");
+        console.log("User not authenticated");
         dispatch(updateClearUser());
       }
     };

@@ -15,7 +15,7 @@ export const HomePage = () => {
         <Typography variant="h2" gutterBottom>
           Job Application Tracker
         </Typography>
-        <Typography variant="h5" color="text.secondary" paragraph>
+        <Typography variant="h5" color="text.secondary">
           Track your job applications, interviews, and offers in one place
         </Typography>
         <Button
