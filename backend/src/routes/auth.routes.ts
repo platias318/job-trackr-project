@@ -1,9 +1,10 @@
 import express, { Request, Response } from "express";
 
+import { pool } from "../config/db.js";
 import passport from "../config/passport.js";
 import { isAuthenticated } from "../middleware/authMiddleware.js";
 import { User } from "../types/user.types.js";
-import { signToken } from "../utils/jwt.js";
+import { signToken, verifyToken } from "../utils/jwt.js";
 
 const router = express.Router();
 
@@ -25,7 +26,35 @@ router.get(
   }),
   (req: Request, res: Response) => {
     const user = req.user as User;
-    const token = signToken(user.id);
+    const code = signToken(user.id);
+
+    res.redirect(`${process.env.FRONTEND_URL}/auth/callback?code=${code}`);
+  },
+);
+
+router.get("/exchange", async (req: Request, res: Response): Promise<void> => {
+  const code = req.query.code as string;
+
+  if (!code) {
+    res.status(400).json({ error: "No code provided" });
+    return;
+  }
+
+  try {
+    const payload = verifyToken(code);
+
+    const result = await pool.query(
+      "SELECT id, email, name FROM users WHERE id = $1",
+      [payload.id],
+    );
+
+    if (!result.rows[0]) {
+      res.status(401).json({ error: "User not found" });
+      return;
+    }
+
+    // Now set the long-lived cookie in a direct API response
+    const token = signToken(result.rows[0].id);
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -34,9 +63,11 @@ router.get(
       maxAge: 24 * 60 * 60 * 1000,
     });
 
-    res.redirect(`${process.env.FRONTEND_URL}/dashboard`); //the "protected" endpoint
-  },
-);
+    res.json({ ok: true });
+  } catch {
+    res.status(401).json({ error: "Invalid or expired code" });
+  }
+});
 
 //When this endpoint gets hit, it checks if we are authenticated with the isAuthenticated func we created above, and then if it is true it returns the user as an object (to the frontend)
 router.get("/me", isAuthenticated, (req: Request, res: Response) => {
