@@ -24,8 +24,8 @@ passport.use(
         const name = profile.displayName;
 
         const existingUser = await pool.query(
-          "SELECT * FROM users WHERE google_id = $1",
-          [googleId],
+          "SELECT * FROM users WHERE google_id = $1 OR email = $2",
+          [googleId, email],
         );
 
         const user = existingUser.rows[0];
