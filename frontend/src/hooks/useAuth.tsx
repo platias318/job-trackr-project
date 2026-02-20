@@ -21,6 +21,8 @@ export const useAuth = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
+      if (isAuthenticated) return;
+
       try {
         dispatch(updateIsLoading(true));
         const userData = await authService.getCurrentUser();
@@ -32,7 +34,7 @@ export const useAuth = () => {
     };
 
     checkAuth();
-  }, [dispatch]);
+  }, [dispatch, isAuthenticated]);
 
   const logout = async () => {
     try {
