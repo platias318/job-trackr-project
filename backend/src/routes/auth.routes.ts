@@ -1,10 +1,10 @@
 import { Request, Response, Router } from "express";
 
-import { pool } from "../config/db.js";
-import passport from "../config/passport.js";
-import { isAuthenticated } from "../middleware/authMiddleware.js";
-import { User } from "../types/user.types.js";
-import { signToken, verifyToken } from "../utils/jwt.js";
+import { pool } from "@/config/db.js";
+import passport from "@/config/passport.js";
+import { isAuthenticated } from "@/middleware/authMiddleware.js";
+import { User } from "@/types/user.types.js";
+import { signToken, verifyToken } from "@/utils/jwt.js";
 
 const router = Router();
 

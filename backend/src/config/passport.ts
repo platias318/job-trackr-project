@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 
-import { pool } from "../config/db.js";
+import { pool } from "./db.js";
 
 /*
   Here we use the passport.js npm package to define the google oauth 2.0 

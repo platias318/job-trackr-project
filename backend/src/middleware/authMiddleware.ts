@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
-import { pool } from "../config/db.js";
-import { verifyToken } from "../utils/jwt.js";
+import { pool } from "@/config/db.js";
+import { verifyToken } from "@/utils/jwt.js";
 
 // This middleware function gets called from every protected endpoint in order to see if the user is authenticated
 export const isAuthenticated = async (
