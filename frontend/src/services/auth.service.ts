@@ -9,6 +9,12 @@ export const authService = {
     const res = await api.get("/api/auth/me");
     return res.data.user;
   },
+  sendCode: async (email: string): Promise<void> => {
+    await api.post("/api/auth/email/send-code", { email });
+  },
+  verifyCode: async (email: string, code: string): Promise<void> => {
+    await api.post("/api/auth/email/verify-code", { email, code });
+  },
   logout: async (): Promise<void> => {
     await api.post("/api/auth/logout");
   },
