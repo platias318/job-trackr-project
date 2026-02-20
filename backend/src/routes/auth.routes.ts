@@ -4,7 +4,9 @@ import { pool } from "../config/db.js";
 import passport from "../config/passport.js";
 import { isAuthenticated } from "../middleware/authMiddleware.js";
 import { User } from "../types/user.types.js";
+import { sendVerificationCode } from "../utils/email.js";
 import { signToken, verifyToken } from "../utils/jwt.js";
+import { generateCode } from "../utils/otp.js";
 
 const router = Router();
 
@@ -29,6 +31,101 @@ router.get(
     const code = signToken(user.id);
 
     res.redirect(`${process.env.FRONTEND_URL}/auth/callback?code=${code}`);
+  },
+);
+
+router.post(
+  "/email/send-code",
+  async (req: Request, res: Response): Promise<void> => {
+    const { email } = req.body;
+
+    if (!email) {
+      res.status(400).json({ error: "Email is required" });
+      return;
+    }
+
+    try {
+      const code = generateCode();
+      const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
+
+      await pool.query("DELETE FROM verification_codes WHERE email = $1", [
+        email,
+      ]);
+
+      await pool.query(
+        "INSERT INTO verification_codes (email, code, expires_at) VALUES ($1, $2, $3)",
+        [email, code, expiresAt],
+      );
+
+      await sendVerificationCode(email, code);
+
+      res.json({ message: "Code sent" });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to send code" });
+    }
+  },
+);
+
+router.post(
+  "/email/verify-code",
+  async (req: Request, res: Response): Promise<void> => {
+    const { email, code } = req.body;
+
+    if (!email || !code) {
+      res.status(400).json({ error: "Email and code are required" });
+      return;
+    }
+
+    try {
+      const result = await pool.query(
+        "SELECT * FROM verification_codes WHERE email = $1 AND code = $2 AND expires_at > NOW()",
+        [email, code],
+      );
+
+      if (!result.rows[0]) {
+        res.status(401).json({ error: "Invalid or expired code" });
+        return;
+      }
+
+      await pool.query("DELETE FROM verification_codes WHERE email = $1", [
+        email,
+      ]);
+
+      const existingUser = await pool.query(
+        "SELECT * FROM users WHERE email = $1",
+        [email],
+      );
+
+      let user = existingUser.rows[0];
+
+      if (!user) {
+        const newUser = await pool.query(
+          "INSERT INTO users (email, name, email_verified) VALUES ($1, $2, TRUE) RETURNING *",
+          [email, email.split("@")[0]],
+        );
+        user = newUser.rows[0];
+      } else if (!user.email_verified) {
+        await pool.query(
+          "UPDATE users SET email_verified = TRUE WHERE id = $1",
+          [user.id],
+        );
+      }
+
+      const token = signToken(user.id);
+
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        maxAge: 24 * 60 * 60 * 1000,
+      });
+
+      res.json({ ok: true });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Something went wrong" });
+    }
   },
 );
 
