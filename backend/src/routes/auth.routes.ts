@@ -10,7 +10,7 @@ import { generateCode } from "../utils/otp.js";
 
 const router = Router();
 
-// This endpoint redirects to google authentication page, this gets called when sign in button is called
+// This endpoint redirects to google authentication page, this gets called when sign in with google button is called
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -22,7 +22,7 @@ router.get(
 router.get(
   "/google/secrets",
   passport.authenticate("google", {
-    failureRedirect: `${process.env.FRONTEND_URL}/login?error=auth_failed`,
+    failureRedirect: `${process.env.FRONTEND_URL}/?error=auth_failed`,
     session: false, // We don't want session cookies
   }),
   // Successful redirect
@@ -34,6 +34,7 @@ router.get(
   },
 );
 
+// This endpoint sends a verification code to the user's mail when signing in via email
 router.post(
   "/email/send-code",
   async (req: Request, res: Response): Promise<void> => {
@@ -129,7 +130,7 @@ router.post(
   },
 );
 
-// This is used to exchange cookies with frontend in order to keep the user signed in
+// This is used to exchange cookies with frontend in order to keep the user signed in (vercel restricts cookies from redirections from backend to frontend)
 router.get("/exchange", async (req: Request, res: Response): Promise<void> => {
   const code = req.query.code as string;
 
