@@ -18,7 +18,7 @@ export const DashboardPage = () => {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      navigate("/login");
+      navigate("/");
     }
   }, [isAuthenticated, isLoading, navigate]);
 
