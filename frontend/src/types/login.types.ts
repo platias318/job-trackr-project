@@ -1,1 +1,1 @@
-export type EmailStep = "input" | "code";
+export type EmailStep = "idle" | "input" | "code"; //rename this file?
