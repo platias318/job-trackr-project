@@ -18,7 +18,7 @@ export const AuthCallbackPage = () => {
     const code = params.get("code");
 
     if (!code) {
-      navigate("/login");
+      navigate("/");
       return;
     }
 
@@ -32,7 +32,7 @@ export const AuthCallbackPage = () => {
       })
       .catch(() => {
         dispatch(updateClearUser());
-        navigate("/login");
+        navigate("/");
       });
   }, [navigate, dispatch]);
 

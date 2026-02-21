@@ -40,7 +40,7 @@ export const useAuth = () => {
     try {
       await authService.logout();
       dispatch(updateClearUser());
-      window.location.href = "/login";
+      window.location.href = "/";
     } catch (err) {
       console.error("Logout failed:", err);
     }
