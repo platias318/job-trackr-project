@@ -9,6 +9,8 @@ import {
 import { authService } from "@/services/auth.service";
 import { useAppDispatch } from "@/stores/hooks";
 
+import { authCallbackPageStyles } from "./AuthCallbackPage.styles";
+
 export const AuthCallbackPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ export const AuthCallbackPage = () => {
     const code = params.get("code");
 
     if (!code) {
-      navigate("/login");
+      navigate("/");
       return;
     }
 
@@ -32,17 +34,12 @@ export const AuthCallbackPage = () => {
       })
       .catch(() => {
         dispatch(updateClearUser());
-        navigate("/login");
+        navigate("/");
       });
   }, [navigate, dispatch]);
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-    >
+    <Box sx={authCallbackPageStyles.root}>
       <CircularProgress />
     </Box>
   );
