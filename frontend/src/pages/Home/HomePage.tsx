@@ -7,15 +7,17 @@ import { AuthForm } from "./components/AuthForm";
 import { MainPageText } from "./components/MainPageText";
 import { homePageStyles } from "./HomePage.styles";
 
-export const HomePage = () => (
-  <Box sx={homePageStyles.root}>
-    <Navbar />
-    <Container maxWidth="sm" sx={homePageStyles.container}>
-      <Box sx={homePageStyles.content}>
-        <MainPageText />
-        <AuthForm />
-      </Box>
-    </Container>
-    <Footer />
-  </Box>
-);
+export const HomePage = () => {
+  return (
+    <Box sx={homePageStyles.root}>
+      <Navbar />
+      <Container maxWidth="sm" sx={homePageStyles.container}>
+        <Box sx={homePageStyles.content}>
+          <MainPageText />
+          <AuthForm />
+        </Box>
+      </Container>
+      <Footer />
+    </Box>
+  );
+};

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Navbar } from "@/components/Navbar/NavBar";
 import { useAuth } from "@/hooks/useAuth";
 
 import { DashboardPageContent } from "../Dashboard/components/DashboardPageContent";
-import { DashboardPageHeader } from "../Dashboard/components/DashboardPageHeader";
 import { LoadingScreen } from "../Dashboard/components/LoadingScreen";
 
 export const DashboardPage = () => {
@@ -23,7 +23,7 @@ export const DashboardPage = () => {
 
   return (
     <>
-      <DashboardPageHeader name={user?.name} onLogout={logout} />
+      <Navbar name={user?.name} onLogout={logout} />
       <DashboardPageContent name={user?.name} email={user?.email} />
     </>
   );
