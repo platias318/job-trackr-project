@@ -61,6 +61,7 @@ export const navbarStyles: INavbarStyles = {
   },
   logoutButton: {
     color: "black",
+    padding: 0,
     fontSize: "1rem",
     textTransform: "none",
     transition: "color 0.4s ease",
