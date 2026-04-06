@@ -2,6 +2,8 @@ import { WorkOutline } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "@/hooks/useAuth";
+
 import { navbarStyles } from "./NavBar.styles";
 
 interface IProps {
@@ -11,10 +13,14 @@ interface IProps {
 
 export const Navbar = ({ name, onLogout }: IProps) => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   return (
     <Box component="nav" sx={navbarStyles.root}>
-      <Box sx={navbarStyles.brand} onClick={() => navigate("/")}>
+      <Box
+        sx={navbarStyles.brand}
+        onClick={() => navigate(isAuthenticated ? "/dashboard" : "/")}
+      >
         <Box sx={navbarStyles.icon} className="brand-icon">
           <WorkOutline fontSize="inherit" />
         </Box>
