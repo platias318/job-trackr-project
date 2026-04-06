@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import { ProtectedRoute } from "./components/routes/ProtectedRoute";
 import { useAuth } from "./hooks/useAuth";
 import { AuthCallbackPage } from "./pages/AuthCallback/AuthCallbackPage";
 import { DashboardPage } from "./pages/Dashboard/DashboardPage";
@@ -18,7 +19,14 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/auth/callback" element={<AuthCallbackPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/legal/privacy" element={<PrivacyPage />} />
           <Route path="/legal/terms" element={<TermsPage />} />
         </Routes>
