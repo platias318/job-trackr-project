@@ -6,6 +6,7 @@ interface INavbarStyles {
   brand: SxProps<Theme>;
   brandText: SxProps<Theme>;
   rightSlot: SxProps<Theme>;
+  languageButton: SxProps<Theme>;
   userName: SxProps<Theme>;
   logoutButton: SxProps<Theme>;
 }
@@ -34,20 +35,20 @@ export const navbarStyles: INavbarStyles = {
     },
     "&:hover .brand-icon": {
       transform: "rotate(-8deg) scale(1.15)",
-      color: "white",
+      color: "rgba(225, 225, 224, 0.97)",
     },
     "&:hover .brand-text": {
-      color: "white",
+      color: "rgba(225, 225, 224, 0.95)",
     },
   },
   icon: {
-    color: "text.primary",
+    color: "white",
     display: "flex",
     alignItems: "center",
     fontSize: 22,
   },
   brandText: {
-    color: "text.primary",
+    color: "white",
     transition: "color 0.40s ease",
   },
   rightSlot: {
@@ -55,18 +56,29 @@ export const navbarStyles: INavbarStyles = {
     alignItems: "center",
     gap: 2,
   },
-  userName: {
-    color: "black",
-    fontSize: "1rem",
-  },
-  logoutButton: {
-    color: "black",
+  languageButton: {
+    color: "white",
     padding: 0,
     fontSize: "1rem",
     textTransform: "none",
-    transition: "color 0.4s ease",
+    backgroundColor: "transparent",
     "&:hover": {
-      color: "white",
+      background: "transparent",
+      textDecoration: "underline",
+    },
+  },
+  userName: {
+    color: "white",
+    fontSize: "1rem",
+  },
+  logoutButton: {
+    color: "white",
+    padding: 0,
+    fontSize: "1rem",
+    textTransform: "none",
+    transition: "color 0.40s ease",
+    "&:hover": {
+      color: "rgba(225, 225, 224, 0.95)",
       background: "transparent",
     },
   },

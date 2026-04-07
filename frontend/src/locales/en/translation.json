@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "title": "Track Your Job Applications",
+    "subtitle": "Stay organized and land your next job faster.",
+    "login": "Login"
+  },
+  "Navigation": {
+    "logout": "Logout"
+  }
+}
