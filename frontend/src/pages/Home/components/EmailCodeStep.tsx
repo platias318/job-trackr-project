@@ -51,7 +51,7 @@ export const EmailCodeStep = ({
         value={code}
         onChange={(e) => setCode(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && onSubmit()}
-        inputProps={{ maxLength: 6 }}
+        slotProps={{ htmlInput: { maxLength: 6 } }}
         sx={emailOtpFormStyles.textField}
       />
       <Button
