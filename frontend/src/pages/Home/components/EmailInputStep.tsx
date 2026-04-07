@@ -1,4 +1,5 @@
 import { Alert, Button, CircularProgress, TextField } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import { emailOtpFormStyles } from "./EmailOtpForm.styles";
 
@@ -17,6 +18,8 @@ export const EmailInputStep = ({
   setEmail,
   onSubmit,
 }: IProps) => {
+  const { t } = useTranslation();
+
   return (
     <>
       {error && (
@@ -25,7 +28,7 @@ export const EmailInputStep = ({
         </Alert>
       )}
       <TextField
-        label="Email address"
+        label={t("HomePage.emailAddress")}
         type="email"
         fullWidth
         value={email}
@@ -41,7 +44,11 @@ export const EmailInputStep = ({
         disabled={isLoading || !email}
         sx={emailOtpFormStyles.primaryButton}
       >
-        {isLoading ? <CircularProgress size={24} /> : "Continue with email"}
+        {isLoading ? (
+          <CircularProgress size={24} />
+        ) : (
+          t("HomePage.continueWithEmail")
+        )}
       </Button>
     </>
   );

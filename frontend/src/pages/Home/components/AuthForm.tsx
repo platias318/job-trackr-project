@@ -1,10 +1,13 @@
 import { Box, Button, Divider } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import { GoogleIcon24 } from "@/assets/icons";
 
 import { authFormStyles } from "./AuthForm.styles";
 import { EmailOtpForm } from "./EmailOtpForm";
 export const AuthForm = () => {
+  const { t } = useTranslation();
+
   return (
     <Box sx={authFormStyles.root}>
       <Button
@@ -15,9 +18,9 @@ export const AuthForm = () => {
         sx={authFormStyles.googleButton}
       >
         <GoogleIcon24 />
-        Continue with google
+        {t("HomePage.continueWithGoogle")}
       </Button>
-      <Divider sx={authFormStyles.divider}>or</Divider>
+      <Divider sx={authFormStyles.divider}>{t("HomePage.or")}</Divider>
       <EmailOtpForm />
     </Box>
   );
