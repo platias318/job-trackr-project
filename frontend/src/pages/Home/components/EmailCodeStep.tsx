@@ -5,6 +5,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import { emailOtpFormStyles } from "./EmailOtpForm.styles";
 
@@ -27,6 +28,8 @@ export const EmailCodeStep = ({
   onSubmit,
   onReset,
 }: IProps) => {
+  const { t } = useTranslation();
+
   return (
     <>
       {error && (
@@ -39,11 +42,11 @@ export const EmailCodeStep = ({
         color="text.secondary"
         sx={emailOtpFormStyles.textField}
       >
-        Enter the code sent to <strong>{email}</strong>. It expires in 10
-        minutes.
+        {t("HomePage.codeExpirationCode")} <strong>{email}</strong>.{" "}
+        {t("HomePage.timeOfExpiration")}
       </Typography>
       <TextField
-        label="Enter verification code"
+        label={t("HomePage.enterVerificationCode")}
         fullWidth
         value={code}
         onChange={(e) => setCode(e.target.value)}
@@ -62,7 +65,7 @@ export const EmailCodeStep = ({
         {isLoading ? <CircularProgress size={24} /> : "Verify email address"}
       </Button>
       <Button variant="text" fullWidth onClick={onReset}>
-        Use a different email
+        {t("HomePage.useDifferentEmail")}
       </Button>
     </>
   );

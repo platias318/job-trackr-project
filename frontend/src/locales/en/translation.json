@@ -1,10 +1,57 @@
 {
+  "jobTrackrProject": "Job Trackr Project",
   "HomePage": {
-    "title": "Track Your Job Applications",
-    "subtitle": "Stay organized and land your next job faster.",
-    "login": "Login"
+    "trackApplications": "Track all your job applications, interviews and offers in one place",
+    "signInToGetStarted": "Sign in to get started",
+    "continueWithGoogle": "Continue with google",
+    "or": "or",
+    "codeExpirationCode": "Enter the code sent to",
+    "timeOfExpiration": "It expires in 10 minutes.",
+    "enterVerificationCode": "Enter verification code",
+    "verifyEmailAddress": "Verify email address",
+    "useDifferentEmail": "Use a different email",
+    "emailAddress": "Email address",
+    "continueWithEmail": "Continue with email"
   },
   "Navigation": {
     "logout": "Logout"
+  },
+  "Footer": {
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contact": "Contact",
+    "allRightsReserved": "All rights reserved"
+  },
+  "Dashboard": {
+    "welcome": "Welcome",
+    "email": "Email",
+    "yourApplications": "Your Applications",
+    "addApplications": "No applications yet. Start adding your job applications!"
+  },
+  "Legal": {
+    "Privacy": {
+      "privacyPolicy": "Privacy Policy",
+      "policyExplanation": "This policy explains how we collect, use, and protect your information when you use Job Trackr.",
+      "informationCollectTitle": "Information We Collect",
+      "informationCollectBody": "We may collect basic information such as your email address and job application data you choose to store within the app.",
+      "passwordsTitle": "Passwords",
+      "passwordsBody": "We do not save any passwords whatsoever, eveyrthing happens with either google sign in or one time passwords via email.",
+      "howWeUseInformationTitle": "How We Use Your Information",
+      "howWeUseInformationBody": "Your data is used solely to provide and improve your experience. We do not sell or share your data with third parties.",
+      "dataSecurityTitle": "Data Security",
+      "dataSecurityBody": "We take reasonable technical measures to protect your data, though no system can guarantee absolute security."
+    },
+    "Terms": {
+      "termsOfService": "Terms of Service",
+      "termsAgree": "By using Job Trackr, you agree to the following terms and conditions. Please read them carefully.",
+      "useOfServiceTitle": "Use of Service",
+      "useOfServiceBody": "Job Trackr is provided for personal use to help you track and manage your job applications in one place and is a personal project for skill growth.",
+      "userResponsibilitiesTitle": "User Responsibilities",
+      "userResponsibilitiesBody": "You are responsible for the accuracy of the data you enter. Please ensure your information is up to date.",
+      "limitationOfLiabilityTitle": "Limitation of Liability",
+      "limitationOfLiabilityBody": "We are not liable for any loss or damage resulting from your use of this application.",
+      "changesToTermsTitle": "Changes to Terms",
+      "changesToTermsBody": "These terms may be updated at any time. Continued use of the service constitutes acceptance of any changes."
+    }
   }
 }

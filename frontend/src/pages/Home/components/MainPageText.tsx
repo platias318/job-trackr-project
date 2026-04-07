@@ -1,19 +1,22 @@
 import { Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import { mainPageTextStyles } from "./MainPageText.styles";
 
 export const MainPageText = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Typography variant="h4" gutterBottom sx={mainPageTextStyles.heading}>
-        Track all your job applications, interviews and offers in one place
+        {t("HomePage.trackApplications")}
       </Typography>
       <Typography
         variant="body1"
         color="text.secondary"
         sx={mainPageTextStyles.subtitle}
       >
-        Sign in to get started
+        {t("HomePage.signInToGetStarted")}
       </Typography>
     </>
   );

@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import { dashboardPageStyles } from "../DashboardPage.styles";
 
@@ -8,20 +9,21 @@ interface IProps {
 }
 
 export const DashboardPageContent = ({ name, email }: IProps) => {
+  const { t } = useTranslation();
   return (
     <Container maxWidth="lg" sx={dashboardPageStyles.container}>
       <Typography variant="h4" gutterBottom>
-        Welcome, {name}!
+        {t("Dashboard.welcome")}, {name}!
       </Typography>
       <Typography variant="body1" color="text.secondary">
-        Email: {email}
+        {t("Dashboard.email")}: {email}
       </Typography>
       <Box sx={dashboardPageStyles.section}>
         <Typography variant="h5" gutterBottom>
-          Your Applications
+          {t("Dashboard.yourApplications")}
         </Typography>
         <Typography color="text.secondary">
-          No applications yet. Start adding your job applications!
+          {t("Dashboard.addApplications")}
         </Typography>
       </Box>
     </Container>
