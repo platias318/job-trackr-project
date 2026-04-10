@@ -79,12 +79,12 @@ router.post(
     }
 
     try {
-      const result = await pool.query(
+      const { rows } = await pool.query(
         "SELECT * FROM verification_codes WHERE email = $1 AND code = $2 AND expires_at > NOW()",
         [email, code],
       );
 
-      if (!result.rows[0]) {
+      if (!rows[0]) {
         res.status(401).json({ error: "Invalid or expired code" });
         return;
       }
@@ -142,18 +142,18 @@ router.get("/exchange", async (req: Request, res: Response): Promise<void> => {
   try {
     const payload = verifyToken(code);
 
-    const result = await pool.query(
+    const { rows } = await pool.query(
       "SELECT id, email, name FROM users WHERE id = $1",
       [payload.id],
     );
 
-    if (!result.rows[0]) {
+    if (!rows[0]) {
       res.status(401).json({ error: "User not found" });
       return;
     }
 
     // Now set the long-lived cookie in a direct API response
-    const token = signToken(result.rows[0].id);
+    const token = signToken(rows[0].id);
 
     res.cookie("token", token, {
       httpOnly: true,
