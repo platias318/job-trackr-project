@@ -17,7 +17,6 @@ passport.use(
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     async (accessToken, refreshToken, profile, cb) => {
-      console.log(profile);
       try {
         const googleId = profile.id;
         const email = profile.emails?.[0].value;

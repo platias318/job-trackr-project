@@ -4,6 +4,7 @@ interface IDashboardPageStyles {
   loadingContainer: SxProps<Theme>;
   container: SxProps<Theme>;
   section: SxProps<Theme>;
+  tabs: SxProps<Theme>;
 }
 
 export const dashboardPageStyles: IDashboardPageStyles = {
@@ -18,5 +19,10 @@ export const dashboardPageStyles: IDashboardPageStyles = {
   },
   section: {
     mt: 4,
+  },
+  tabs: {
+    mb: 3,
+    borderBottom: 1,
+    borderColor: "divider",
   },
 };
