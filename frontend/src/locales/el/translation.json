@@ -27,10 +27,13 @@
     "email": "Email",
     "yourApplications": "Οι αιτήσεις σας",
     "addApplications": "Δεν υπάρχουν ακόμα αιτήσεις. Ξεκινήστε προσθέτοντας τις αιτήσεις εργασίας σας!",
+    "applications": "Αιτησεις",
+    "myCVs": "Τα βιογραφικα μου",
     "ApplicationsTab": {
       "myApplications": "Οι αιτήσεις μου",
       "totalApplications": "συνολικές αιτήσεις",
       "addApplication": "Προσθήκη αίτησης",
+      "editApplication": "Επεξεργασία αίτησης",
       "addFirstApplication": "Προσθέστε την πρώτη σας αίτηση για να ξεκινήσετε την παρακολούθηση της αναζήτησης εργασίας σας.",
       "company": "Εταιρεία",
       "jobTitle": "Τίτλος θέσης",
@@ -55,7 +58,18 @@
       "accepted": "Αποδοχή",
       "rejected": "Απόρριψη",
       "ghosted": "Χωρίς ανταπόκριση",
-      "withdrawn": "Αποσύρθηκε"
+      "withdrawn": "Αποσύρθηκε",
+      "AddDeleteApplicationDialog": {
+        "companyName": "Όνομα εταιρείας *",
+        "jobTitle": "Τίτλος θέσης *",
+        "status": "Κατάσταση *",
+        "dateApplied": "Ημερομηνία υποβολής *",
+        "jobPostLink": "Σύνδεσμος θέσης εργασίας",
+        "linkedInLink": "Σύνδεσμος LinkedIn",
+        "notes": "Σημειώσεις",
+        "notesAboutApplication": "Σημειώσεις για την συγκρεκριμένη αίτηση...",
+        "saveChanges": "Αποθήκευση αλλαγών"
+      }
     },
     "CVTab": {
       "myCVs": "Τα Βιογραφικά μου",
@@ -74,7 +88,24 @@
       "deleteCV": "Διαγραφή βιογραφικού;",
       "deleteCVSure": "Είστε σίγουροι ότι θέλετε να διαγράψετε το",
       "deleteCVSureUndone": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
-      "cancel": "Ακύρωση"
+      "cancel": "Ακύρωση",
+      "AddDeleteCVDialog": {
+        "onlyPdfFilesAllowed": "Μόνο αρχεία pdf επιτρέπονται.",
+        "fileUnder1mb": "Τα αρχεία πρέπει να είναι κάτω απο 1MB.",
+        "nameRequired": "Το όνομα είναι υποχρεωτικό.",
+        "selectAPdfFile": "Παρακαλώ επιλέξτε ένα αρχείο PDF.",
+        "editCV": "Επεξεργάσου βιογραφικό",
+        "uploadCV": "Ανέβασε βιογραφικό",
+        "clickToSelectPDF": "Κλίκαρε για να επιλέξεις ένα PDF",
+        "name": "Όνομα *",
+        "namePlaceholder": "πχ 'Προγραμματιστής Backend έκδοση2'",
+        "versionLabel": "Ετικέτα εκδοχής",
+        "versionLabelPlaceholder": "e.g. 'Εστίαση σε θέση Senior, 1 σελίδα'",
+        "notes": "Σημειώσεις",
+        "reminders": "Υπενθυμίσεις σχετικά με αυτή την έκδοση βιογραφικού...",
+        "defaultCV": "Όρισμός ως το προεπιλεγμένο βιογραφικό",
+        "saveChanges": "Αποθήκευση αλλαγών"
+      }
     }
   },
   "Legal": {

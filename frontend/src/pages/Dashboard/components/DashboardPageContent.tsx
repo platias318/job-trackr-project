@@ -13,6 +13,7 @@ interface IProps {
 
 export const DashboardPageContent = ({ name, email }: IProps) => {
   const { t } = useTranslation();
+
   const [tab, setTab] = useState(0);
 
   return (
@@ -26,8 +27,8 @@ export const DashboardPageContent = ({ name, email }: IProps) => {
 
       <Box sx={dashboardPageStyles.tabs}>
         <Tabs value={tab} onChange={(_, v) => setTab(v)}>
-          <Tab label="Applications" />
-          <Tab label="My CVs" />
+          <Tab label={t("Dashboard.applications")} />
+          <Tab label={t("Dashboard.myCVs")} />
         </Tabs>
       </Box>
 

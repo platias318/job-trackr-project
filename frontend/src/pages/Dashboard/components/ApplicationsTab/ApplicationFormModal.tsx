@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   type Application,
@@ -44,6 +45,8 @@ export const ApplicationFormModal = ({
   onSubmit,
   editingApplication,
 }: IProps) => {
+  const { t } = useTranslation();
+
   const [form, setForm] = useState<CreateApplicationPayload>(emptyForm);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -97,25 +100,33 @@ export const ApplicationFormModal = ({
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>
-        {editingApplication ? "Edit Application" : "Add Application"}
+        {editingApplication
+          ? t("Dashboard.ApplicationsTab.editApplication")
+          : t("Dashboard.ApplicationsTab.addApplication")}
       </DialogTitle>
       <DialogContent>
         <Box display="flex" flexDirection="column" gap={2} pt={1}>
           <TextField
-            label="Company Name *"
+            label={t(
+              "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.companyName",
+            )}
             value={form.company_name}
             onChange={set("company_name")}
             fullWidth
           />
           <TextField
-            label="Job Title *"
+            label={t(
+              "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.jobTitle",
+            )}
             value={form.job_title}
             onChange={set("job_title")}
             fullWidth
           />
           <TextField
             select
-            label="Status *"
+            label={t(
+              "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.status",
+            )}
             value={form.status}
             fullWidth
             onChange={(e) =>
@@ -132,7 +143,9 @@ export const ApplicationFormModal = ({
             ))}
           </TextField>
           <TextField
-            label="Date Applied *"
+            label={t(
+              "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.dateApplied",
+            )}
             type="date"
             value={form.date_applied}
             onChange={set("date_applied")}
@@ -140,14 +153,18 @@ export const ApplicationFormModal = ({
             InputLabelProps={{ shrink: true }}
           />
           <TextField
-            label="Job Post Link"
+            label={t(
+              "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.jobPostLink",
+            )}
             value={form.job_link}
             onChange={set("job_link")}
             fullWidth
             placeholder="https://..."
           />
           <TextField
-            label="LinkedIn Link"
+            label={t(
+              "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.linkedInLink",
+            )}
             value={form.linkedin_link}
             onChange={set("linkedin_link")}
             fullWidth
@@ -155,14 +172,18 @@ export const ApplicationFormModal = ({
           />
           <Box>
             <TextField
-              label="Notes"
+              label={t(
+                "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.notes",
+              )}
               value={form.notes}
               onChange={set("notes")}
               fullWidth
               multiline
               rows={3}
               inputProps={{ maxLength: 500 }}
-              placeholder="Any notes about this application..."
+              placeholder={t(
+                "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.notesAboutApplication",
+              )}
             />
             <Typography
               variant="caption"
@@ -182,7 +203,7 @@ export const ApplicationFormModal = ({
       </DialogContent>
       <DialogActions sx={{ px: 3, pb: 2 }}>
         <Button onClick={onClose} disabled={submitting}>
-          Cancel
+          {t("Dashboard.ApplicationsTab.cancel")}
         </Button>
         <Button
           variant="contained"
@@ -190,7 +211,11 @@ export const ApplicationFormModal = ({
           disabled={submitting}
           startIcon={submitting ? <CircularProgress size={16} /> : null}
         >
-          {editingApplication ? "Save Changes" : "Add Application"}
+          {editingApplication
+            ? t(
+                "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.saveChanges",
+              )
+            : t("Dashboard.ApplicationsTab.addApplication")}
         </Button>
       </DialogActions>
     </Dialog>
