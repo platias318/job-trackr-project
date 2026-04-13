@@ -27,10 +27,13 @@
     "email": "Email",
     "yourApplications": "Your Applications",
     "addApplications": "No applications yet. Start adding your job applications!",
+    "applications": "Applications",
+    "myCVs": "My CVs",
     "ApplicationsTab": {
       "myApplications": "My Applications",
       "totalApplications": "total applications",
       "addApplication": "Add Application",
+      "editApplication": "Edit Application",
       "addFirstApplication": "Add your first application to start tracking your job hunt.",
       "company": "Company",
       "jobTitle": "Job Title",
@@ -55,7 +58,18 @@
       "accepted": "Accepted",
       "rejected": "Rejected",
       "ghosted": "Ghosted",
-      "withdrawn": "Withdrawn"
+      "withdrawn": "Withdrawn",
+      "AddDeleteApplicationDialog": {
+        "companyName": "Company Name *",
+        "jobTitle": "Job Title *",
+        "status": "Status *",
+        "dateApplied": "Date Applied *",
+        "jobPostLink": "Job Post Link",
+        "linkedInLink": "LinkedIn Link",
+        "notes": "notes",
+        "notesAboutApplication": "Any notes about this application...",
+        "saveChanges": "Save Changes"
+      }
     },
     "CVTab": {
       "myCVs": "My CVs",
@@ -74,7 +88,24 @@
       "deleteCV": "Delete CV?",
       "deleteCVSure": "Are you sure you want to delete",
       "deleteCVSureUndone": "This cannot be undone.",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "AddDeleteCVDialog": {
+        "onlyPdfFilesAllowed": "Only PDF files are allowed.",
+        "fileUnder1mb": "File must be under 1MB.",
+        "nameRequired": "Name is required.",
+        "selectAPdfFile": "Please select a PDF file.",
+        "editCV": "Edit CV",
+        "uploadCV": "Upload CV",
+        "clickToSelectPDF": "Click to select a PDF",
+        "name": "Name *",
+        "namePlaceholder": "e.g. 'Backend Engineer v2'",
+        "versionLabel": "Version Label",
+        "versionLabelPlaceholder": "e.g. 'Senior focus, 1 page'",
+        "notes": "Notes",
+        "reminders": "Any reminders about this version...",
+        "defaultCV": "Set as default CV",
+        "saveChanges": "Save Changes"
+      }
     }
   },
   "Legal": {

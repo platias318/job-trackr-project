@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import type {
   CreateCVPayload,
@@ -43,6 +44,8 @@ export const CVFormModal = ({
   onUpdate,
   editingCV,
 }: IProps) => {
+  const { t } = useTranslation();
+
   const [form, setForm] = useState<CVFormState>(emptyForm);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -67,11 +70,11 @@ export const CVFormModal = ({
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.type !== "application/pdf") {
-      setError("Only PDF files are allowed.");
+      setError(t("Dashboard.CVTab.AddDeleteCVDialog.onlyPdfFilesAllowed"));
       return;
     }
     if (file.size > 1 * 1024 * 1024) {
-      setError("File must be under 1MB.");
+      setError(t("Dashboard.CVTab.AddDeleteCVDialog.fileUnder1mb"));
       return;
     }
     setError(null);
@@ -80,11 +83,11 @@ export const CVFormModal = ({
 
   const handleSubmit = async () => {
     if (!form.name.trim()) {
-      setError("Name is required.");
+      setError(t("Dashboard.CVTab.AddDeleteCVDialog.nameRequired"));
       return;
     }
     if (!editingCV && !form.file) {
-      setError("Please select a PDF file.");
+      setError(t("Dashboard.CVTab.AddDeleteCVDialog.selectAPdfFile"));
       return;
     }
 
@@ -118,7 +121,11 @@ export const CVFormModal = ({
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>{editingCV ? "Edit CV" : "Upload CV"}</DialogTitle>
+      <DialogTitle>
+        {editingCV
+          ? t("Dashboard.CVTab.AddDeleteCVDialog.editCV")
+          : t("Dashboard.CVTab.AddDeleteCVDialog.uploadCV")}
+      </DialogTitle>
       <DialogContent>
         <Box display="flex" flexDirection="column" gap={2} pt={1}>
           {!editingCV && (
@@ -136,7 +143,9 @@ export const CVFormModal = ({
                 onClick={() => fileInputRef.current?.click()}
                 sx={{ py: 2, borderStyle: "dashed" }}
               >
-                {form.file ? `📄 ${form.file.name}` : "Click to select a PDF"}
+                {form.file
+                  ? `📄 ${form.file.name}`
+                  : t("Dashboard.CVTab.AddDeleteCVDialog.clickToSelectPDF")}
               </Button>
               {form.file && (
                 <Typography
@@ -152,7 +161,7 @@ export const CVFormModal = ({
           )}
 
           <TextField
-            label="Name *"
+            label={t("Dashboard.CVTab.AddDeleteCVDialog.name")}
             value={form.name}
             onChange={(e) =>
               setForm((prev: CVFormState) => ({
@@ -161,11 +170,11 @@ export const CVFormModal = ({
               }))
             }
             fullWidth
-            placeholder='e.g. "Backend Engineer v2"'
+            placeholder={t("Dashboard.CVTab.AddDeleteCVDialog.namePlaceholder")}
             error={!!error && !form.name.trim()}
           />
           <TextField
-            label="Version Label"
+            label={t("Dashboard.CVTab.AddDeleteCVDialog.versionLabel")}
             value={form.version_label}
             onChange={(e) =>
               setForm((prev: CVFormState) => ({
@@ -174,10 +183,12 @@ export const CVFormModal = ({
               }))
             }
             fullWidth
-            placeholder='e.g. "Senior focus, 1 page"'
+            placeholder={t(
+              "Dashboard.CVTab.AddDeleteCVDialog.versionLabelPlaceholder",
+            )}
           />
           <TextField
-            label="Notes"
+            label={t("Dashboard.CVTab.AddDeleteCVDialog.notes")}
             value={form.notes}
             onChange={(e) =>
               setForm((prev: CVFormState) => ({
@@ -188,7 +199,7 @@ export const CVFormModal = ({
             fullWidth
             multiline
             rows={3}
-            placeholder="Any reminders about this version..."
+            placeholder={t("Dashboard.CVTab.AddDeleteCVDialog.reminders")}
           />
           <FormControlLabel
             control={
@@ -202,7 +213,7 @@ export const CVFormModal = ({
                 }
               />
             }
-            label="Set as default CV"
+            label={t("Dashboard.CVTab.AddDeleteCVDialog.defaultCV")}
           />
 
           {error && (
@@ -214,7 +225,7 @@ export const CVFormModal = ({
       </DialogContent>
       <DialogActions sx={{ px: 3, pb: 2 }}>
         <Button onClick={onClose} disabled={submitting}>
-          Cancel
+          {t("Dashboard.CVTab.cancel")}
         </Button>
         <Button
           variant="contained"
@@ -222,7 +233,9 @@ export const CVFormModal = ({
           disabled={submitting}
           startIcon={submitting ? <CircularProgress size={16} /> : null}
         >
-          {editingCV ? "Save Changes" : "Upload CV"}
+          {editingCV
+            ? t("Dashboard.CVTab.AddDeleteCVDialog.saveChanges")
+            : t("Dashboard.CVTab.AddDeleteCVDialog.uploadCV")}
         </Button>
       </DialogActions>
     </Dialog>
