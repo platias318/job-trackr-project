@@ -64,10 +64,10 @@ For more detailed documentation:
 
 This project was built to:
 
-- Practice fullstack architecture
+- Practice fullstack architecture with as clean code as possible
 - Implement secure authentication (OAuth + OTP)
 - Work with PostgreSQL in a production like environment
-- Build and deploy a scalable web application live with vercel servers
+- Build and deploy a scalable web application live with vercel servers while using  sql tables to fetch and update data instantly
 
 ---
 
