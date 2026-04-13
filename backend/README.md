@@ -1,4 +1,4 @@
-# Job Trackr — Backend (IN PROGRESS)
+# Job Trackr — Backend (IN PROGRESS BUT WORKING)
 
 The backend for Job Trackr, built with Node.js, Express and TypeScript.
 
@@ -67,7 +67,8 @@ The application uses PostgreSQL hosted on Neon.
 
 - `users`
 - `verification_codes`
-
+- `applications`
+- `cvs`
 ---
 
 ## Email Delivery
