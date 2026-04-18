@@ -35,21 +35,20 @@ export const navbarStyles: INavbarStyles = {
     },
     "&:hover .brand-icon": {
       transform: "rotate(-8deg) scale(1.15)",
-      color: "rgba(225, 225, 224, 0.97)",
+      color: "text.primary",
     },
     "&:hover .brand-text": {
-      color: "rgba(225, 225, 224, 0.95)",
+      color: "text.primary",
     },
   },
   icon: {
-    color: "white",
+    color: "text.primary",
     display: "flex",
     alignItems: "center",
     fontSize: 22,
   },
   brandText: {
-    color: "white",
-    transition: "color 0.40s ease",
+    color: "text.primary",
   },
   rightSlot: {
     display: "flex",
@@ -57,7 +56,7 @@ export const navbarStyles: INavbarStyles = {
     gap: 2,
   },
   languageButton: {
-    color: "white",
+    color: "text.primary",
     padding: 0,
     fontSize: "1rem",
     textTransform: "none",
@@ -68,17 +67,17 @@ export const navbarStyles: INavbarStyles = {
     },
   },
   userName: {
-    color: "white",
+    color: "text.primary",
     fontSize: "1rem",
+    fontWeight: "bold",
   },
   logoutButton: {
-    color: "white",
+    color: "text.primary",
     padding: 0,
     fontSize: "1rem",
     textTransform: "none",
-    transition: "color 0.40s ease",
     "&:hover": {
-      color: "rgba(225, 225, 224, 0.95)",
+      color: "text.primary",
       background: "transparent",
     },
   },

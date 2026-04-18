@@ -18,6 +18,6 @@ export const applicationFilterBarStyles: IApplicationFilterBarStyles = {
   },
   activeChip: {
     fontWeight: 700,
-    color: "#fff",
+    color: "primary.contrastText",
   },
 };

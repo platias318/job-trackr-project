@@ -22,6 +22,6 @@ export const applicationTableRowStyles: IApplicationTableRowStyles = {
   linkedInIcon: {
     fontSize: 18,
     color: "text.secondary",
-    "&:hover": { color: "#0077b5" },
+    "&:hover": { color: "info.main" },
   },
 };

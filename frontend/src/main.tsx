@@ -1,21 +1,19 @@
 import "@/i18n";
 
-import { CssBaseline, ThemeProvider } from "@mui/material";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 
 import { store } from "@/stores/store.ts";
 
-import theme from "../theme";
-import App from "./App.tsx";
+import { ThemedApp } from "./components/ThemedApp";
+import { ThemeProvider } from "./context/ThemeProvider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
+      <ThemeProvider>
+        <ThemedApp />
       </ThemeProvider>
     </Provider>
   </StrictMode>,
