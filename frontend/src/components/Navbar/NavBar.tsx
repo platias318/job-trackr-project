@@ -7,6 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 import i18n from "@/i18n";
 
 import { navbarStyles } from "./NavBar.styles";
+import { ThemeToggleButton } from "./ThemeToggleButton";
 
 interface IProps {
   name?: string;
@@ -44,6 +45,7 @@ export const Navbar = ({ name, onLogout }: IProps) => {
         </Typography>
       </Box>
       <Box sx={navbarStyles.rightSlot}>
+        <ThemeToggleButton />
         <Button
           disableRipple
           sx={navbarStyles.languageButton}
