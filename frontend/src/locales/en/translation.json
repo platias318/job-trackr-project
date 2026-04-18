@@ -41,6 +41,7 @@
       "jobTitle": "Job Title",
       "status": "Status",
       "dateApplied": "Date Applied",
+      "notes": "Notes",
       "links": "Links",
       "actions": "Actions",
       "noApplicationsWithStatus": "No applications with status",

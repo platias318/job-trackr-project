@@ -1,5 +1,6 @@
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import LinkIcon from "@mui/icons-material/Link";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {
@@ -57,6 +58,20 @@ export const ApplicationTableRow = ({ app, onEdit, onDelete }: IProps) => {
         <Typography variant="body2" color="text.secondary">
           {new Date(app.date_applied).toLocaleDateString()}
         </Typography>
+      </TableCell>
+
+      <TableCell>
+        {app.notes ? (
+          <Tooltip title={app.notes} arrow placement="top">
+            <InfoOutlinedIcon
+              sx={{ fontSize: 18, color: "text.secondary", cursor: "pointer" }}
+            />
+          </Tooltip>
+        ) : (
+          <Typography variant="caption" color="text.disabled">
+            —
+          </Typography>
+        )}
       </TableCell>
 
       <TableCell>

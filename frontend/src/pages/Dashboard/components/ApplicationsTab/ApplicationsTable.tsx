@@ -49,6 +49,9 @@ export const ApplicationsTable = ({
               <strong>{t("Dashboard.ApplicationsTab.dateApplied")}</strong>
             </TableCell>
             <TableCell>
+              <strong>{t("Dashboard.ApplicationsTab.notes")}</strong>
+            </TableCell>
+            <TableCell>
               <strong>{t("Dashboard.ApplicationsTab.links")}</strong>
             </TableCell>
             <TableCell align="right">
