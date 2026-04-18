@@ -36,22 +36,22 @@ export const ApplicationsTable = ({
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>
+            <TableCell align="center">
               <strong>{t("Dashboard.ApplicationsTab.company")}</strong>
             </TableCell>
-            <TableCell>
+            <TableCell align="center">
               <strong>{t("Dashboard.ApplicationsTab.jobTitle")}</strong>
             </TableCell>
-            <TableCell>
+            <TableCell align="center">
               <strong>{t("Dashboard.ApplicationsTab.status")}</strong>
             </TableCell>
-            <TableCell>
+            <TableCell align="center">
               <strong>{t("Dashboard.ApplicationsTab.dateApplied")}</strong>
             </TableCell>
-            <TableCell>
+            <TableCell align="center">
               <strong>{t("Dashboard.ApplicationsTab.notes")}</strong>
             </TableCell>
-            <TableCell>
+            <TableCell align="center">
               <strong>{t("Dashboard.ApplicationsTab.links")}</strong>
             </TableCell>
             <TableCell align="right">

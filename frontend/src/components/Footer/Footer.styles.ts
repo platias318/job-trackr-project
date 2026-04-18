@@ -11,11 +11,14 @@ export const footerStyles: IFooterStyles = {
     display: "flex",
     flexDirection: { xs: "column", sm: "row" },
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: { xs: "center", sm: "space-between" },
+    textAlign: { xs: "center", sm: "left" },
     gap: 2,
   },
   links: {
     display: "flex",
-    gap: 3,
+    gap: 2,
+    flexWrap: "wrap",
+    justifyContent: { xs: "center", sm: "flex-end" },
   },
 };

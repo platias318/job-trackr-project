@@ -13,14 +13,14 @@ interface INavbarStyles {
 
 export const navbarStyles: INavbarStyles = {
   root: {
-    borderBottom: "1px solid",
-    borderColor: "divider",
-    px: 4,
-    py: 2,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    borderBottom: "1px solid",
+    borderColor: "divider",
     bgcolor: "primary.main",
+    px: { xs: 2, sm: 3, md: 4 },
+    py: 2,
   },
   brand: {
     display: "flex",
@@ -49,16 +49,20 @@ export const navbarStyles: INavbarStyles = {
   },
   brandText: {
     color: "text.primary",
+    fontSize: { xs: "1rem", sm: "1.25rem" },
   },
   rightSlot: {
     display: "flex",
     alignItems: "center",
-    gap: 2,
+    gap: 1.5,
+    flexWrap: { xs: "wrap", sm: "nowrap" },
+    justifyContent: "flex-end",
   },
   languageButton: {
     color: "text.primary",
-    padding: 0,
-    fontSize: "1rem",
+    padding: "4px 6px",
+    minWidth: 36,
+    fontSize: "0.9rem",
     textTransform: "none",
     backgroundColor: "transparent",
     "&:hover": {
@@ -67,14 +71,15 @@ export const navbarStyles: INavbarStyles = {
     },
   },
   userName: {
+    display: { xs: "none", sm: "block" },
     color: "text.primary",
-    fontSize: "1rem",
+    fontSize: "0.95rem",
     fontWeight: "bold",
   },
   logoutButton: {
     color: "text.primary",
     padding: 0,
-    fontSize: "1rem",
+    fontSize: "0.9rem",
     textTransform: "none",
     "&:hover": {
       color: "text.primary",

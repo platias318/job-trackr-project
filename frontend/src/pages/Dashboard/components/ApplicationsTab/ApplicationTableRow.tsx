@@ -31,17 +31,17 @@ export const ApplicationTableRow = ({ app, onEdit, onDelete }: IProps) => {
 
   return (
     <TableRow hover>
-      <TableCell>
+      <TableCell align="center">
         <Typography variant="body2" sx={applicationTableRowStyles.companyName}>
           {app.company_name}
         </Typography>
       </TableCell>
 
-      <TableCell>
+      <TableCell align="center">
         <Typography variant="body2">{app.job_title}</Typography>
       </TableCell>
 
-      <TableCell>
+      <TableCell align="center">
         <Chip
           label={`${meta.emoji} ${app.status}`}
           size="small"
@@ -54,13 +54,13 @@ export const ApplicationTableRow = ({ app, onEdit, onDelete }: IProps) => {
         />
       </TableCell>
 
-      <TableCell>
+      <TableCell align="center">
         <Typography variant="body2" color="text.secondary">
           {new Date(app.date_applied).toLocaleDateString()}
         </Typography>
       </TableCell>
 
-      <TableCell>
+      <TableCell align="center">
         {app.notes ? (
           <Tooltip title={app.notes} arrow placement="top">
             <InfoOutlinedIcon
@@ -74,8 +74,8 @@ export const ApplicationTableRow = ({ app, onEdit, onDelete }: IProps) => {
         )}
       </TableCell>
 
-      <TableCell>
-        <Box display="flex" gap={0.5}>
+      <TableCell align="center">
+        <Box display="flex" justifyContent="center" gap={0.5}>
           {app.job_link && (
             <Tooltip title={t("Dashboard.ApplicationsTab.jobPostTooltip")}>
               <IconButton
