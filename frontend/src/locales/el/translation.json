@@ -14,7 +14,9 @@
     "continueWithEmail": "Συνέχεια μέσω email"
   },
   "Navigation": {
-    "logout": "Αποσύνδεση"
+    "logout": "Αποσύνδεση",
+    "lightMode": "Φωτεινή λειτουργία",
+    "darkMode": "Σκοτεινή λειτουργία"
   },
   "Footer": {
     "privacyPolicy": "Πολιτική",

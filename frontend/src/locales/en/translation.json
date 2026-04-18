@@ -14,7 +14,9 @@
     "continueWithEmail": "Continue with email"
   },
   "Navigation": {
-    "logout": "Logout"
+    "logout": "Logout",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode"
   },
   "Footer": {
     "privacyPolicy": "Privacy Policy",
