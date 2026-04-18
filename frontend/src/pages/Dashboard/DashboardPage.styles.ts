@@ -1,6 +1,7 @@
 import type { SxProps, Theme } from "@mui/material";
 
 interface IDashboardPageStyles {
+  root: SxProps<Theme>;
   loadingContainer: SxProps<Theme>;
   container: SxProps<Theme>;
   section: SxProps<Theme>;
@@ -8,6 +9,11 @@ interface IDashboardPageStyles {
 }
 
 export const dashboardPageStyles: IDashboardPageStyles = {
+  root: {
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+  },
   loadingContainer: {
     display: "flex",
     justifyContent: "center",
