@@ -45,6 +45,7 @@
       "links": "Links",
       "actions": "Actions",
       "noApplicationsWithStatus": "No applications with status",
+      "noApplicationsYet": "No applications yet.",
       "deleteApplication": "Delete Application",
       "deleteApplicationSure": "Are you sure you want to delete your application to",
       "deleteApplicationSureUndone": "This cannot be undone.",

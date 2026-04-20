@@ -45,6 +45,7 @@
       "links": "Σύνδεσμοι",
       "actions": "Ενέργειες",
       "noApplicationsWithStatus": "Δεν υπάρχουν αιτήσεις με κατάσταση",
+      "noApplicationsYet": "Δεν υπάρχουν ακόμη αιτήσεις.",
       "deleteApplication": "Διαγραφή αίτησης",
       "deleteApplicationSure": "Είστε σίγουροι ότι θέλετε να διαγράψετε την αίτησή σας για",
       "deleteApplicationSureUndone": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
