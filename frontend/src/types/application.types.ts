@@ -1,3 +1,6 @@
+// Keep in sync with MAX_APPLICATIONS in backend/src/types/application.types.ts
+export const MAX_APPLICATIONS = 15;
+
 export const APPLICATION_STATUSES = [
   "Applied",
   "Interview",

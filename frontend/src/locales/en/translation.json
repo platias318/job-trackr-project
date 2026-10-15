@@ -34,6 +34,8 @@
     "ApplicationsTab": {
       "myApplications": "My Applications",
       "totalApplications": "total applications",
+      "atLimitTooltip": "You've reached the {{limit}} application limit",
+      "atLimitWarning": "You've reached the maximum of {{limit}} applications. Delete one to add a new application.",
       "addApplication": "Add Application",
       "editApplication": "Edit Application",
       "addFirstApplication": "Add your first application to start tracking your job hunt.",

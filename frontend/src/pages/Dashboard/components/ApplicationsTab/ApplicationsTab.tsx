@@ -1,6 +1,13 @@
 import AddIcon from "@mui/icons-material/Add";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
-import { Alert, Box, Button, Skeleton, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Skeleton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -36,6 +43,8 @@ export const ApplicationsTab = () => {
     update,
     remove,
     filterByStatus,
+    atLimit,
+    limit,
   } = useApplications();
 
   const handleEdit = (app: Application) => {
@@ -58,21 +67,36 @@ export const ApplicationsTab = () => {
             {t("Dashboard.ApplicationsTab.myApplications")}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {applications.length}{" "}
+            {applications.length} / {limit}{" "}
             {t("Dashboard.ApplicationsTab.totalApplications")}
           </Typography>
         </Box>
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
-          onClick={() => {
-            setEditingApp(null);
-            setModalOpen(true);
-          }}
+        <Tooltip
+          title={
+            atLimit ? t("Dashboard.ApplicationsTab.atLimitTooltip", { limit }) : ""
+          }
         >
-          {t("Dashboard.ApplicationsTab.addApplication")}
-        </Button>
+          <span>
+            <Button
+              variant="contained"
+              startIcon={<AddIcon />}
+              disabled={atLimit}
+              onClick={() => {
+                setEditingApp(null);
+                setModalOpen(true);
+              }}
+            >
+              {t("Dashboard.ApplicationsTab.addApplication")}
+            </Button>
+          </span>
+        </Tooltip>
       </Box>
+
+      {atLimit && (
+        <Alert severity="warning" sx={{ mb: 2 }}>
+          {t("Dashboard.ApplicationsTab.atLimitWarning", { limit })}
+        </Alert>
+      )}
 
       <ApplicationFilterBar
         activeFilter={activeFilter}
