@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { applicationService } from "@/services/application.service";
-import type {
-  Application,
-  ApplicationStatus,
-  CreateApplicationPayload,
-  UpdateApplicationPayload,
+import {
+  type Application,
+  type ApplicationStatus,
+  type CreateApplicationPayload,
+  MAX_APPLICATIONS,
+  type UpdateApplicationPayload,
 } from "@/types/application.types";
 
 export const useApplications = () => {
@@ -59,5 +60,7 @@ export const useApplications = () => {
     update,
     remove,
     filterByStatus,
+    atLimit: applications.length >= MAX_APPLICATIONS,
+    limit: MAX_APPLICATIONS,
   };
 };

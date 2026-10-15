@@ -10,6 +10,7 @@ import {
 } from "../services/application.service.js";
 import {
   CreateApplicationPayload,
+  MAX_APPLICATIONS,
   UpdateApplicationPayload,
 } from "../types/application.types.js";
 import { User } from "../types/user.types.js";
@@ -45,10 +46,10 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
   }
 
   const count = await getApplicationCount(user.id);
-  if (count >= 10) {
-    res
-      .status(400)
-      .json({ error: "You have reached the maximum of 10 applications" });
+  if (count >= MAX_APPLICATIONS) {
+    res.status(400).json({
+      error: `You have reached the maximum of ${MAX_APPLICATIONS} applications`,
+    });
     return;
   }
 

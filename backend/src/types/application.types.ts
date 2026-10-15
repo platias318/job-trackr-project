@@ -1,3 +1,5 @@
+export const MAX_APPLICATIONS = 15;
+
 export const APPLICATION_STATUSES = [
   "Applied",
   "Interview",
