@@ -8,7 +8,7 @@ interface IHomePageStyles {
 
 export const homePageStyles: IHomePageStyles = {
   root: {
-    minHeight: "100vh",
+    minHeight: "100dvh",
     display: "flex",
     flexDirection: "column",
   },
@@ -20,7 +20,7 @@ export const homePageStyles: IHomePageStyles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: "calc(100vh - 128px)",
+    minHeight: "calc(100dvh - 128px)",
     py: 6,
   },
 };

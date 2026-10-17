@@ -6,11 +6,13 @@ interface IDashboardPageStyles {
   container: SxProps<Theme>;
   section: SxProps<Theme>;
   tabs: SxProps<Theme>;
+  welcome: SxProps<Theme>;
+  email: SxProps<Theme>;
 }
 
 export const dashboardPageStyles: IDashboardPageStyles = {
   root: {
-    minHeight: "100vh",
+    minHeight: "100dvh",
     display: "flex",
     flexDirection: "column",
   },
@@ -18,7 +20,7 @@ export const dashboardPageStyles: IDashboardPageStyles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "100vh",
+    minHeight: "100dvh",
   },
   container: {
     mt: 4,
@@ -30,5 +32,12 @@ export const dashboardPageStyles: IDashboardPageStyles = {
     mb: 3,
     borderBottom: 1,
     borderColor: "divider",
+  },
+  welcome: {
+    fontSize: { xs: "1.5rem", sm: "2.125rem" },
+    overflowWrap: "anywhere",
+  },
+  email: {
+    overflowWrap: "anywhere",
   },
 };

@@ -1,4 +1,5 @@
 import {
+  Box,
   Paper,
   Table,
   TableBody,
@@ -6,11 +7,14 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { type Application } from "@/types/application.types";
 
+import { ApplicationCard } from "./ApplicationCard";
 import { applicationsTableStyles } from "./ApplicationsTable.styles";
 import { ApplicationTableRow } from "./ApplicationTableRow";
 
@@ -26,6 +30,23 @@ export const ApplicationsTable = ({
   onDelete,
 }: IProps) => {
   const { t } = useTranslation();
+  const theme = useTheme();
+  const isCompact = useMediaQuery(theme.breakpoints.down("md"));
+
+  if (isCompact) {
+    return (
+      <Box sx={applicationsTableStyles.cardList}>
+        {applications.map((app) => (
+          <ApplicationCard
+            key={app.id}
+            app={app}
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
+        ))}
+      </Box>
+    );
+  }
 
   return (
     <TableContainer
