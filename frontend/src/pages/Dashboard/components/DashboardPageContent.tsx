@@ -18,15 +18,25 @@ export const DashboardPageContent = ({ name, email }: IProps) => {
 
   return (
     <Container maxWidth="lg" sx={dashboardPageStyles.container}>
-      <Typography variant="h4" fontWeight={700} gutterBottom>
+      <Typography
+        variant="h4"
+        fontWeight={700}
+        gutterBottom
+        sx={dashboardPageStyles.welcome}
+      >
         {t("Dashboard.welcome")}, {name}!
       </Typography>
-      <Typography variant="body1" color="text.secondary" mb={4}>
+      <Typography
+        variant="body1"
+        color="text.secondary"
+        mb={4}
+        sx={dashboardPageStyles.email}
+      >
         {t("Dashboard.email")}: {email}
       </Typography>
 
       <Box sx={dashboardPageStyles.tabs}>
-        <Tabs value={tab} onChange={(_, v) => setTab(v)}>
+        <Tabs value={tab} onChange={(_, v) => setTab(v)} variant="fullWidth">
           <Tab label={t("Dashboard.applications")} />
           <Tab label={t("Dashboard.myCVs")} />
         </Tabs>

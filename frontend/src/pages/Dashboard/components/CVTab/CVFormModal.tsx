@@ -10,6 +10,8 @@ import {
   FormControlLabel,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -45,6 +47,8 @@ export const CVFormModal = ({
   editingCV,
 }: IProps) => {
   const { t } = useTranslation();
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [form, setForm] = useState<CVFormState>(emptyForm);
   const [submitting, setSubmitting] = useState(false);
@@ -120,7 +124,13 @@ export const CVFormModal = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="sm"
+      fullScreen={fullScreen}
+    >
       <DialogTitle>
         {editingCV
           ? t("Dashboard.CVTab.AddDeleteCVDialog.editCV")

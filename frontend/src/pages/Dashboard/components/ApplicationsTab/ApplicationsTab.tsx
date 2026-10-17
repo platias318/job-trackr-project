@@ -73,7 +73,9 @@ export const ApplicationsTab = () => {
         </Box>
         <Tooltip
           title={
-            atLimit ? t("Dashboard.ApplicationsTab.atLimitTooltip", { limit }) : ""
+            atLimit
+              ? t("Dashboard.ApplicationsTab.atLimitTooltip", { limit })
+              : ""
           }
         >
           <span>

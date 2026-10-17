@@ -9,6 +9,8 @@ import {
   MenuItem,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -46,6 +48,8 @@ export const ApplicationFormModal = ({
   editingApplication,
 }: IProps) => {
   const { t } = useTranslation();
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [form, setForm] = useState<CreateApplicationPayload>(emptyForm);
   const [submitting, setSubmitting] = useState(false);
@@ -98,7 +102,13 @@ export const ApplicationFormModal = ({
   const notesLength = form.notes?.length ?? 0;
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="sm"
+      fullScreen={fullScreen}
+    >
       <DialogTitle>
         {editingApplication
           ? t("Dashboard.ApplicationsTab.editApplication")

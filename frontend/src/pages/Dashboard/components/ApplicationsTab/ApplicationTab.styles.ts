@@ -12,6 +12,8 @@ export const applicationsTabStyles: IApplicationTabStyles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: 2,
     mb: 3,
   },
   emptyStateIcon: {
