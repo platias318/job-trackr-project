@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 import { useCVs } from "@/hooks/useCVs";
 import type { CreateCVPayload, CV, UpdateCVPayload } from "@/types/cv.types";
@@ -36,11 +37,22 @@ export const CVTab = () => {
 
   const handleSubmit = async (payload: CreateCVPayload) => {
     await create(payload);
+    toast.success(t("Toasts.cvCreated"));
   };
 
   const handleUpdate = async (payload: UpdateCVPayload) => {
     if (!editingCV) return;
     await update(editingCV.id, payload);
+    toast.success(t("Toasts.cvUpdated"));
+  };
+
+  const handleDelete = async (id: number) => {
+    try {
+      await remove(id);
+      toast.success(t("Toasts.cvDeleted"));
+    } catch {
+      toast.error(t("Toasts.cvDeleteFailed"));
+    }
   };
 
   return (
@@ -129,7 +141,7 @@ export const CVTab = () => {
       <DeleteCVDialog
         cv={deletingCV}
         onClose={() => setDeletingCV(null)}
-        onConfirm={remove}
+        onConfirm={handleDelete}
       />
     </Box>
   );

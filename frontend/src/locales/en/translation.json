@@ -114,6 +114,16 @@
       }
     }
   },
+  "Toasts": {
+    "applicationCreated": "Application added",
+    "applicationUpdated": "Application updated",
+    "applicationDeleted": "Application deleted",
+    "applicationDeleteFailed": "Couldn't delete the application. Please try again.",
+    "cvCreated": "CV added",
+    "cvUpdated": "CV updated",
+    "cvDeleted": "CV deleted",
+    "cvDeleteFailed": "Couldn't delete the CV. Please try again."
+  },
   "Legal": {
     "Privacy": {
       "privacyPolicy": "Privacy Policy",

@@ -114,6 +114,16 @@
       }
     }
   },
+  "Toasts": {
+    "applicationCreated": "Η αίτηση προστέθηκε",
+    "applicationUpdated": "Η αίτηση ενημερώθηκε",
+    "applicationDeleted": "Η αίτηση διαγράφηκε",
+    "applicationDeleteFailed": "Δεν ήταν δυνατή η διαγραφή της αίτησης. Δοκιμάστε ξανά.",
+    "cvCreated": "Το βιογραφικό προστέθηκε",
+    "cvUpdated": "Το βιογραφικό ενημερώθηκε",
+    "cvDeleted": "Το βιογραφικό διαγράφηκε",
+    "cvDeleteFailed": "Δεν ήταν δυνατή η διαγραφή του βιογραφικού. Δοκιμάστε ξανά."
+  },
   "Legal": {
     "Privacy": {
       "privacyPolicy": "Πολιτική Απορρήτου",
