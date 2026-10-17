@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 import { useApplications } from "@/hooks/useApplications";
 import {
@@ -53,8 +54,22 @@ export const ApplicationsTab = () => {
   };
 
   const handleSubmit = async (payload: CreateApplicationPayload) => {
-    if (editingApp) await update(editingApp.id, payload);
-    else await create(payload);
+    if (editingApp) {
+      await update(editingApp.id, payload);
+      toast.success(t("Toasts.applicationUpdated"));
+    } else {
+      await create(payload);
+      toast.success(t("Toasts.applicationCreated"));
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    try {
+      await remove(id);
+      toast.success(t("Toasts.applicationDeleted"));
+    } catch {
+      toast.error(t("Toasts.applicationDeleteFailed"));
+    }
   };
 
   const visibleApplications = filterByStatus(activeFilter);
@@ -164,7 +179,7 @@ export const ApplicationsTab = () => {
       <DeleteApplicationDialog
         app={deletingApp}
         onClose={() => setDeletingApp(null)}
-        onConfirm={remove}
+        onConfirm={handleDelete}
       />
     </Box>
   );

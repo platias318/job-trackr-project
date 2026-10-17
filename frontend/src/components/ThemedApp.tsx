@@ -4,6 +4,8 @@ import App from "@/App.tsx";
 import { useThemeMode } from "@/hooks/useThemeMode";
 import { getTheme } from "@/theme/theme";
 
+import { AppToastContainer } from "./Toast/AppToastContainer";
+
 export const ThemedApp = () => {
   const { isDark } = useThemeMode();
 
@@ -11,6 +13,7 @@ export const ThemedApp = () => {
     <ThemeProvider theme={getTheme(isDark)}>
       <CssBaseline />
       <App />
+      <AppToastContainer />
     </ThemeProvider>
   );
 };
