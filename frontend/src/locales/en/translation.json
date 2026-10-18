@@ -70,6 +70,17 @@
       "followUpOverdue": "Overdue ({{days}}d)",
       "followUpIn": "In {{days}}d",
       "followUpsDue": "Follow-ups due",
+      "searchPlaceholder": "Search company, title or notes…",
+      "clearSearch": "Clear search",
+      "sortBy": "Sort by",
+      "noApplicationsMatch": "No applications match your search.",
+      "sort": {
+        "newest": "Newest first",
+        "oldest": "Oldest first",
+        "stageFar": "Furthest stage first",
+        "stageEarly": "Earliest stage first",
+        "followUp": "Follow-up date (soonest)"
+      },
       "AddDeleteApplicationDialog": {
         "companyName": "Company Name *",
         "jobTitle": "Job Title *",

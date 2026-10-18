@@ -19,11 +19,16 @@ import {
   type CreateApplicationPayload,
   STATUS_TRANSLATION_KEYS,
 } from "@/types/application.types";
+import {
+  filterAndSortApplications,
+  type SortOption,
+} from "@/utils/applicationList";
 
 import { ApplicationFilterBar } from "./ApplicationFilterBar";
 import { ApplicationFormModal } from "./ApplicationFormModal";
 import { ApplicationsTable } from "./ApplicationsTable";
 import { applicationsTabStyles } from "./ApplicationTab.styles";
+import { ApplicationToolbar } from "./ApplicationToolbar";
 import { DeleteApplicationDialog } from "./DeleteApplicationDialog";
 import { FollowUpAlert } from "./FollowUpAlert";
 
@@ -33,6 +38,8 @@ export const ApplicationsTab = () => {
   const [activeFilter, setActiveFilter] = useState<ApplicationStatus | "All">(
     "All",
   );
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState<SortOption>("newest");
   const [modalOpen, setModalOpen] = useState(false);
   const [editingApp, setEditingApp] = useState<Application | null>(null);
   const [deletingApp, setDeletingApp] = useState<Application | null>(null);
@@ -44,7 +51,6 @@ export const ApplicationsTab = () => {
     create,
     update,
     remove,
-    filterByStatus,
     atLimit,
     limit,
   } = useApplications();
@@ -73,7 +79,11 @@ export const ApplicationsTab = () => {
     }
   };
 
-  const visibleApplications = filterByStatus(activeFilter);
+  const visibleApplications = filterAndSortApplications(applications, {
+    status: activeFilter,
+    query,
+    sort,
+  });
 
   return (
     <Box>
@@ -117,6 +127,13 @@ export const ApplicationsTab = () => {
       )}
 
       <FollowUpAlert applications={applications} onSelect={handleEdit} />
+
+      <ApplicationToolbar
+        query={query}
+        sort={sort}
+        onQueryChange={setQuery}
+        onSortChange={setSort}
+      />
 
       <ApplicationFilterBar
         activeFilter={activeFilter}
@@ -163,11 +180,11 @@ export const ApplicationsTab = () => {
         visibleApplications.length === 0 && (
           <Box sx={applicationsTabStyles.noResultsBox}>
             <Typography color="text.secondary">
-              {t("Dashboard.ApplicationsTab.noApplicationsWithStatus")} "
-              {t(
-                `Dashboard.ApplicationsTab.${STATUS_TRANSLATION_KEYS[activeFilter]}`,
-              )}
-              "
+              {query.trim() || activeFilter === "All"
+                ? t("Dashboard.ApplicationsTab.noApplicationsMatch")
+                : `${t("Dashboard.ApplicationsTab.noApplicationsWithStatus")} "${t(
+                    `Dashboard.ApplicationsTab.${STATUS_TRANSLATION_KEYS[activeFilter]}`,
+                  )}"`}
             </Typography>
           </Box>
         )}
