@@ -114,6 +114,12 @@
       }
     }
   },
+  "CookieConsent": {
+    "title": "Cookie notice",
+    "message": "We use cookies to keep you signed in and remember your preferences.",
+    "learnMore": "Learn more",
+    "accept": "Accept cookies"
+  },
   "Toasts": {
     "applicationCreated": "Application added",
     "applicationUpdated": "Application updated",
@@ -134,6 +140,8 @@
       "passwordsBody": "We do not save any passwords whatsoever, eveyrthing happens with either google sign in or one time passwords via email.",
       "howWeUseInformationTitle": "How We Use Your Information",
       "howWeUseInformationBody": "Your data is used solely to provide and improve your experience. We do not sell or share your data with third parties.",
+      "cookiesTitle": "Cookies",
+      "cookiesBody": "Job Trackr uses a single essential cookie to keep you signed in, and your browser's local storage to remember your theme, language and cookie choice. We do not use advertising or tracking cookies.",
       "dataSecurityTitle": "Data Security",
       "dataSecurityBody": "We take reasonable technical measures to protect your data, though no system can guarantee absolute security."
     },

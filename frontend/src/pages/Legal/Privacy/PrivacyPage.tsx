@@ -24,6 +24,10 @@ export const PrivacyPage = () => {
       body: t("Legal.Privacy.howWeUseInformationBody"),
     },
     {
+      title: t("Legal.Privacy.cookiesTitle"),
+      body: t("Legal.Privacy.cookiesBody"),
+    },
+    {
       title: t("Legal.Privacy.dataSecurityTitle"),
       body: t("Legal.Privacy.dataSecurityBody"),
     },
