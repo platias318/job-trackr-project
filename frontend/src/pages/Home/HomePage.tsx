@@ -13,8 +13,12 @@ export const HomePage = () => {
       <Navbar />
       <Container maxWidth="sm" sx={homePageStyles.container}>
         <Box sx={homePageStyles.content}>
-          <MainPageText />
-          <AuthForm />
+          <Box sx={homePageStyles.hero}>
+            <MainPageText />
+          </Box>
+          <Box sx={homePageStyles.card}>
+            <AuthForm />
+          </Box>
         </Box>
       </Container>
       <Footer />
