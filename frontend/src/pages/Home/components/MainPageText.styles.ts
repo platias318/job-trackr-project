@@ -7,8 +7,16 @@ interface IMainPageTextStyles {
 
 export const mainPageTextStyles: IMainPageTextStyles = {
   heading: {
-    fontWeight: 700,
+    fontWeight: 800,
     textAlign: "center",
+    fontSize: { xs: "1.75rem", sm: "2.4rem" },
+    lineHeight: 1.2,
+    backgroundImage: (theme: Theme) =>
+      `linear-gradient(120deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    color: "primary.main",
   },
   subtitle: {
     textAlign: "center",
