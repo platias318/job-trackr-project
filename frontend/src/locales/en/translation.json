@@ -31,6 +31,21 @@
     "addApplications": "No applications yet. Start adding your job applications!",
     "applications": "Applications",
     "myCVs": "My CVs",
+    "stats": {
+      "tab": "Stats",
+      "noData": "Add some applications to see your stats.",
+      "total": "Applications",
+      "active": "Still active",
+      "activeHint": "Applied, interview, test or offer",
+      "responseRate": "Response rate",
+      "responseRateHint": "Heard back (interview or rejection)",
+      "interviewRate": "Interview rate",
+      "interviewRateHint": "Currently at interview stage or beyond",
+      "byStatus": "Applications by status",
+      "perWeek": "Applications per week",
+      "lastWeeks": "Last {{count}} weeks",
+      "note": "Based on each application's current status."
+    },
     "ApplicationsTab": {
       "myApplications": "My Applications",
       "totalApplications": "total applications",

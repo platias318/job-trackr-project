@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { dashboardPageStyles } from "../DashboardPage.styles";
 import { ApplicationsTab } from "./ApplicationsTab/ApplicationsTab";
 import { CVTab } from "./CVTab/CVTab";
+import { StatsTab } from "./StatsTab/StatsTab";
 
 interface IProps {
   name?: string;
@@ -39,11 +40,13 @@ export const DashboardPageContent = ({ name, email }: IProps) => {
         <Tabs value={tab} onChange={(_, v) => setTab(v)} variant="fullWidth">
           <Tab label={t("Dashboard.applications")} />
           <Tab label={t("Dashboard.myCVs")} />
+          <Tab label={t("Dashboard.stats.tab")} />
         </Tabs>
       </Box>
 
       {tab === 0 && <ApplicationsTab />}
       {tab === 1 && <CVTab />}
+      {tab === 2 && <StatsTab />}
     </Container>
   );
 };
