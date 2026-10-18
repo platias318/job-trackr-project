@@ -70,6 +70,17 @@
       "followUpOverdue": "Εκπρόθεσμο ({{days}}μ)",
       "followUpIn": "Σε {{days}}μ",
       "followUpsDue": "Follow-up που εκκρεμούν",
+      "searchPlaceholder": "Αναζήτηση εταιρείας, θέσης ή σημειώσεων…",
+      "clearSearch": "Καθαρισμός αναζήτησης",
+      "sortBy": "Ταξινόμηση",
+      "noApplicationsMatch": "Καμία αίτηση δεν ταιριάζει με την αναζήτηση.",
+      "sort": {
+        "newest": "Νεότερες πρώτα",
+        "oldest": "Παλαιότερες πρώτα",
+        "stageFar": "Πιο προχωρημένο στάδιο πρώτα",
+        "stageEarly": "Πρώιμο στάδιο πρώτα",
+        "followUp": "Ημερομηνία follow-up (πλησιέστερη)"
+      },
       "AddDeleteApplicationDialog": {
         "companyName": "Όνομα εταιρείας *",
         "jobTitle": "Τίτλος θέσης *",
