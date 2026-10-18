@@ -23,6 +23,7 @@ export interface Application {
   job_link: string | null;
   linkedin_link: string | null;
   notes: string | null;
+  follow_up_date: string | null;
   created_at: Date;
   updated_at: Date;
 }
@@ -35,6 +36,7 @@ export type CreateApplicationPayload = {
   job_link?: string | null;
   linkedin_link?: string | null;
   notes?: string | null;
+  follow_up_date?: string | null;
 };
 
 export interface UpdateApplicationPayload {
@@ -45,4 +47,5 @@ export interface UpdateApplicationPayload {
   job_link?: string | null;
   linkedin_link?: string | null;
   notes?: string | null;
+  follow_up_date?: string | null;
 }

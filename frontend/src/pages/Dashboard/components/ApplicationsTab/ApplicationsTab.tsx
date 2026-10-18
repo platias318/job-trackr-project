@@ -25,6 +25,7 @@ import { ApplicationFormModal } from "./ApplicationFormModal";
 import { ApplicationsTable } from "./ApplicationsTable";
 import { applicationsTabStyles } from "./ApplicationTab.styles";
 import { DeleteApplicationDialog } from "./DeleteApplicationDialog";
+import { FollowUpAlert } from "./FollowUpAlert";
 
 export const ApplicationsTab = () => {
   const { t } = useTranslation();
@@ -114,6 +115,8 @@ export const ApplicationsTab = () => {
           {t("Dashboard.ApplicationsTab.atLimitWarning", { limit })}
         </Alert>
       )}
+
+      <FollowUpAlert applications={applications} onSelect={handleEdit} />
 
       <ApplicationFilterBar
         activeFilter={activeFilter}

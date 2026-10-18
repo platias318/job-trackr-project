@@ -21,6 +21,12 @@ import {
   type ApplicationStatus,
   type CreateApplicationPayload,
 } from "@/types/application.types";
+import {
+  addDaysString,
+  dateOnly,
+  DEFAULT_FOLLOW_UP_DAYS,
+  FOLLOW_UP_STATUSES,
+} from "@/utils/followUp";
 
 interface IProps {
   open: boolean;
@@ -39,6 +45,7 @@ const emptyForm: CreateApplicationPayload = {
   job_link: "",
   linkedin_link: "",
   notes: "",
+  follow_up_date: "",
 };
 
 export const ApplicationFormModal = ({
@@ -65,6 +72,7 @@ export const ApplicationFormModal = ({
         job_link: editingApplication.job_link ?? "",
         linkedin_link: editingApplication.linkedin_link ?? "",
         notes: editingApplication.notes ?? "",
+        follow_up_date: dateOnly(editingApplication.follow_up_date),
       });
     } else {
       setForm(emptyForm);
@@ -87,9 +95,10 @@ export const ApplicationFormModal = ({
     try {
       await onSubmit({
         ...form,
-        job_link: form.job_link || undefined,
-        linkedin_link: form.linkedin_link || undefined,
-        notes: form.notes || undefined,
+        job_link: form.job_link || null,
+        linkedin_link: form.linkedin_link || null,
+        notes: form.notes || null,
+        follow_up_date: form.follow_up_date || null,
       });
       onClose();
     } catch (err: unknown) {
@@ -139,12 +148,17 @@ export const ApplicationFormModal = ({
             )}
             value={form.status}
             fullWidth
-            onChange={(e) =>
+            onChange={(e) => {
+              const status = e.target.value as ApplicationStatus;
               setForm((p) => ({
                 ...p,
-                status: e.target.value as ApplicationStatus,
-              }))
-            }
+                status,
+                follow_up_date:
+                  !p.follow_up_date && FOLLOW_UP_STATUSES.includes(status)
+                    ? addDaysString(DEFAULT_FOLLOW_UP_DAYS)
+                    : p.follow_up_date,
+              }));
+            }}
           >
             {APPLICATION_STATUSES.map((s) => (
               <MenuItem key={s} value={s}>
@@ -161,6 +175,23 @@ export const ApplicationFormModal = ({
             onChange={set("date_applied")}
             fullWidth
             InputLabelProps={{ shrink: true }}
+          />
+          <TextField
+            label={t(
+              "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.followUpDate",
+            )}
+            type="date"
+            value={form.follow_up_date ?? ""}
+            onChange={set("follow_up_date")}
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+            helperText={
+              FOLLOW_UP_STATUSES.includes(form.status)
+                ? t(
+                    "Dashboard.ApplicationsTab.AddDeleteApplicationDialog.followUpHelper",
+                  )
+                : undefined
+            }
           />
           <TextField
             label={t(

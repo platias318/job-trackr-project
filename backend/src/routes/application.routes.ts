@@ -59,6 +59,7 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
       job_link: data.job_link || null,
       linkedin_link: data.linkedin_link || null,
       notes: data.notes || null,
+      follow_up_date: data.follow_up_date || null,
     });
     res.status(201).json({ application });
   } catch {

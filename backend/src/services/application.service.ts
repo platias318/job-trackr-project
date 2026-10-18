@@ -20,8 +20,8 @@ export const createApplication = async (
   data: CreateApplicationPayload,
 ): Promise<Application> => {
   const { rows } = await pool.query(
-    `INSERT INTO applications (user_id, company_name, job_title, status, date_applied, job_link, linkedin_link, notes)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+    `INSERT INTO applications (user_id, company_name, job_title, status, date_applied, job_link, linkedin_link, notes, follow_up_date)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
      RETURNING *`,
     [
       userId,
@@ -32,6 +32,7 @@ export const createApplication = async (
       data.job_link ?? null,
       data.linkedin_link ?? null,
       data.notes ?? null,
+      data.follow_up_date ?? null,
     ],
   );
   return rows[0];
@@ -44,24 +45,30 @@ export const updateApplication = async (
 ): Promise<Application | null> => {
   const { rows } = await pool.query(
     `UPDATE applications
-     SET company_name  = COALESCE($1, company_name),
-         job_title     = COALESCE($2, job_title),
-         status        = COALESCE($3, status),
-         date_applied  = COALESCE($4, date_applied),
-         job_link      = COALESCE($5, job_link),
-         linkedin_link = COALESCE($6, linkedin_link),
-         notes         = COALESCE($7, notes),
-         updated_at    = NOW()
-     WHERE id = $8 AND user_id = $9
+     SET company_name   = COALESCE($1, company_name),
+         job_title      = COALESCE($2, job_title),
+         status         = COALESCE($3, status),
+         date_applied   = COALESCE($4, date_applied),
+         job_link       = CASE WHEN $5::boolean  THEN $6::text  ELSE job_link END,
+         linkedin_link  = CASE WHEN $7::boolean  THEN $8::text  ELSE linkedin_link END,
+         notes          = CASE WHEN $9::boolean  THEN $10::text ELSE notes END,
+         follow_up_date = CASE WHEN $11::boolean THEN $12::date ELSE follow_up_date END,
+         updated_at     = NOW()
+     WHERE id = $13 AND user_id = $14
      RETURNING *`,
     [
       data.company_name,
       data.job_title,
       data.status,
       data.date_applied,
-      data.job_link,
-      data.linkedin_link,
-      data.notes,
+      data.job_link !== undefined,
+      data.job_link ?? null,
+      data.linkedin_link !== undefined,
+      data.linkedin_link ?? null,
+      data.notes !== undefined,
+      data.notes ?? null,
+      data.follow_up_date !== undefined,
+      data.follow_up_date ?? null,
       id,
       userId,
     ],

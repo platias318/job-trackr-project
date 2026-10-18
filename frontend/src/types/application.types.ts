@@ -54,6 +54,7 @@ export interface Application {
   job_link: string | null;
   linkedin_link: string | null;
   notes: string | null;
+  follow_up_date: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -63,9 +64,10 @@ export interface CreateApplicationPayload {
   job_title: string;
   status: ApplicationStatus;
   date_applied: string;
-  job_link?: string;
-  linkedin_link?: string;
-  notes?: string;
+  job_link?: string | null;
+  linkedin_link?: string | null;
+  notes?: string | null;
+  follow_up_date?: string | null;
 }
 
 export interface UpdateApplicationPayload {
@@ -73,7 +75,8 @@ export interface UpdateApplicationPayload {
   job_title?: string;
   status?: ApplicationStatus;
   date_applied?: string;
-  job_link?: string;
-  linkedin_link?: string;
-  notes?: string;
+  job_link?: string | null;
+  linkedin_link?: string | null;
+  notes?: string | null;
+  follow_up_date?: string | null;
 }
