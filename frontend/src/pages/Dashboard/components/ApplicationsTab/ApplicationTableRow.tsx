@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import { type Application, STATUS_META } from "@/types/application.types";
 
 import { applicationTableRowStyles } from "./ApplicationTableRow.styles";
+import { FollowUpBadge } from "./FollowUpBadge";
 
 interface IProps {
   app: Application;
@@ -58,6 +59,10 @@ export const ApplicationTableRow = ({ app, onEdit, onDelete }: IProps) => {
         <Typography variant="body2" color="text.secondary">
           {new Date(app.date_applied).toLocaleDateString()}
         </Typography>
+      </TableCell>
+
+      <TableCell align="center">
+        <FollowUpBadge app={app} />
       </TableCell>
 
       <TableCell align="center">

@@ -70,6 +70,9 @@ export const ApplicationsTable = ({
               <strong>{t("Dashboard.ApplicationsTab.dateApplied")}</strong>
             </TableCell>
             <TableCell align="center">
+              <strong>{t("Dashboard.ApplicationsTab.followUp")}</strong>
+            </TableCell>
+            <TableCell align="center">
               <strong>{t("Dashboard.ApplicationsTab.notes")}</strong>
             </TableCell>
             <TableCell align="center">

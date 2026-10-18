@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { type Application, STATUS_META } from "@/types/application.types";
 
 import { applicationCardStyles } from "./ApplicationCard.styles";
+import { FollowUpBadge } from "./FollowUpBadge";
 
 interface IProps {
   app: Application;
@@ -44,9 +45,12 @@ export const ApplicationCard = ({ app, onEdit, onDelete }: IProps) => {
         />
       </Box>
 
-      <Typography variant="caption" color="text.secondary">
-        {new Date(app.date_applied).toLocaleDateString()}
-      </Typography>
+      <Box display="flex" alignItems="center" flexWrap="wrap" gap={1}>
+        <Typography variant="caption" color="text.secondary">
+          {new Date(app.date_applied).toLocaleDateString()}
+        </Typography>
+        {app.follow_up_date && <FollowUpBadge app={app} />}
+      </Box>
 
       {app.notes && (
         <Typography
