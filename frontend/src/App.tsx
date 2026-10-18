@@ -4,7 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { CookieConsent } from "./components/CookieConsent/CookieConsent";
 import { ProtectedRoute } from "./components/routes/ProtectedRoute";
-import { useAuth } from "./hooks/useAuth";
+import { RedirectIfAuthenticated } from "./components/routes/RedirectIfAuthenticated";
+import { useAuthBootstrap } from "./hooks/useAuth";
 import { AuthCallbackPage } from "./pages/AuthCallback/AuthCallbackPage";
 import { DashboardPage } from "./pages/Dashboard/DashboardPage";
 import { HomePage } from "./pages/Home/HomePage";
@@ -12,13 +13,20 @@ import { PrivacyPage } from "./pages/Legal/Privacy/PrivacyPage";
 import { TermsPage } from "./pages/Legal/Terms/TermsPage";
 
 function App() {
-  useAuth();
+  useAuthBootstrap();
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/"
+            element={
+              <RedirectIfAuthenticated>
+                <HomePage />
+              </RedirectIfAuthenticated>
+            }
+          />
           <Route path="/auth/callback" element={<AuthCallbackPage />} />
           <Route
             path="/dashboard"
